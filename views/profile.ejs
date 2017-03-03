@@ -1,0 +1,98 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title><%=user.username %>'s Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body        { padding-top:10px;}
+        #buttonLogOut {
+         line-height: 12px;
+         width: 75px;
+         height: 40px;
+         font-size: 11pt;
+         font-family: tahoma;
+         margin-top: 1px;
+         margin-right: 2px;
+         position:absolute;
+         top:0;
+         right:0;
+      }
+
+      .mainDiv {
+        width : 70%;
+      }
+      .mainDiv2 {
+        width : 72%;
+      }
+      .borderStyle {
+        border-radius: 5px;
+        border : 1px solid #ccc!important;
+        border-radius: 16px!important;
+        padding-bottom: 5px;
+      }
+      .setWidth {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      .borderStyle2 {
+        border-radius: 5px;
+        width: 25%;
+      }
+      .adjustWidth {
+        height: 100%;
+        width: 70%;
+        float: right;
+      }
+}
+    </style>
+</head>
+<body>
+
+
+
+
+<div class="mainDiv2 container">
+  <%if (profile_pic != "") { %>
+  <img class = "borderStyle2"  src="/uploads/<%=profile_pic%>" />
+  <% } %>
+  <%if (profile_pic == "") { %>
+  <div class="jumbotron">
+    <h1>Add your Profile Picture</h1>
+  </div>
+  <div >
+    <a href="/uploadProfile" class="btn btn-default setWidth">Upload</a>
+  </div>
+  <% } %>
+
+
+  <div class="adjustWidth jumbotron">
+    <center><h1>Add Work</h1></center>
+    <p>Add your works so that clients can view and rate them.</p>
+  </div>
+</div>
+<div class = "mainDiv borderStyle container">
+    <form action="/profile" method="post" enctype="multipart/form-data">
+      <br>
+        <div class="form-element form-group">
+            <label>Work Name : </label>
+            <input type="text" class="form-control" name="work_name">
+        </div>
+        <div class="form-group">
+            <label>Work Link : </label>
+            <input type="text" class="form-control" name="work_link">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file"  name="avatar" class="form-control-file" >
+          <small class="form-text text-muted">Upload a Screenshot for you work.</small>
+        </div>
+        <button type="submit" class="btn btn-warning btn-lg">Submit</button>
+    </form>
+</div>
+</body>
+</html>

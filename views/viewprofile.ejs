@@ -1,0 +1,95 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title><%=username%>'s Profile%></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+    * {
+        font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bolder;
+    }
+    .borderStyle {
+      border-radius: 2px;
+      border-radius: 5px;
+    }
+    .row {
+        margin-left: 1%;
+        border-style:
+    }
+    .navbar-default {
+        height: 100px;
+        padding-top: 23px;
+        padding-left: 70px;
+        border: 0;
+        border-radius: 0 !important;
+        background: #2c3e50;
+    }
+    .navbar-default .navbar-brand {
+        text-transform: uppercase;
+        font-size: 2em;
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+        cursor: pointer;
+    }
+    .navbar-default .navbar-brand:hover {
+        color: #18bc9c;
+        transition: color 0.3s ease;
+    }
+    .card {
+        padding: 10px;
+        padding-top: 20px;
+        background: #18bc9c;
+        border: 1px #c8c3ff solid;
+        border-radius: 5px;
+        text-align: center;
+        margin: 10px 6% 6% 3%;
+        width: calc(73% * (1/3));
+    }
+    .card .card-title {
+        color: #02695e;
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+    .card .card-link {
+        margin-top: 20px;
+        font-size: 1.1em;
+        font-weight: bold;
+        width: 100%;
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+        transition: background-color 0.5s ease;
+    }
+    .card .card-link:hover {
+        color: #18bc9c;
+        background: white;
+        transition: background-color 0.5s ease;
+    }
+    .form-container {
+        height: 400px;
+        border-left: 1px solid gray;
+        padding-left: 30px;
+    }
+    .form-control {
+        width: 100%;
+    }
+    </style>
+</head>
+<body>
+  <% for(var i=0; i<works.length; i++){%>
+      <div class="card col-xs-4">
+       <h4 class="card-title">  App Name : <%= works[i].work_name %></h4>
+        <h4 class="card-title"> Done By : <%= works[i].student_username %></h4>
+
+        <%if (works[i].work_pic != "") { %>
+        Work Pic : <img class = "borderStyle" width = "70px" src="/uploads/<%=works[i].work_pic%>" />
+        <% } %>
+        <a href="http://<%= works[i].work_link %>" class="btn btn-primary card-link">Visit Website</a>
+      </div>
+  <% } %>
+</body>
+</html>
