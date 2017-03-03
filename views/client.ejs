@@ -99,7 +99,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="row">
-                <% for(var i=0; i<Math.min(10, works.length); i++){%>
+                <%  if (typeof works != 'undefined') for(var i=0; i<Math.min(10, works.length); i++){%>
                     <div class="card col-xs-4">
                      <h4 class="card-title">  App Name : <%= works[i].work_name %></h4>
                       <h4 class="card-title"> Done By : <%= works[i].student_username %></h4>
